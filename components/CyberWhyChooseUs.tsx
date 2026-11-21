@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
+import categoryData from "@/data";
+import type { ReasonIconKey } from "@/types/category";
 
-type Reason = {
-  number: string;
-  title: string;
-  description: string;
-  icon: ReactNode;
-};
+const whyContent = categoryData.whyChooseUs;
 
 const iconProps = {
   viewBox: "0 0 40 40",
@@ -53,36 +50,12 @@ const HandshakeIcon = (
   </svg>
 );
 
-const reasons: Reason[] = [
-  {
-    number: "01",
-    title: "Expertise & Experience",
-    description:
-      "A skilled team with deep cybersecurity knowledge across industries.",
-    icon: ShieldCheckIcon,
-  },
-  {
-    number: "02",
-    title: "Proactive Threat Protection",
-    description:
-      "Identify, prevent, and respond to threats before they impact your business.",
-    icon: LayersIcon,
-  },
-  {
-    number: "03",
-    title: "Tailored Security Solutions",
-    description:
-      "Flexible and scalable services designed for your specific needs.",
-    icon: LaptopGearIcon,
-  },
-  {
-    number: "04",
-    title: "Compliance & Trust",
-    description:
-      "Help you meet industry standards and build a stronger, more secure digital environment.",
-    icon: HandshakeIcon,
-  },
-];
+const reasonIcons: Record<ReasonIconKey, ReactNode> = {
+  shieldCheck: ShieldCheckIcon,
+  layers: LayersIcon,
+  laptopGear: LaptopGearIcon,
+  handshake: HandshakeIcon,
+};
 
 export default function CyberWhyChooseUs() {
   return (
@@ -96,21 +69,21 @@ export default function CyberWhyChooseUs() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              Why Choose Us
+              {whyContent.eyebrow}
             </span>
           </div>
 
           <h2 className="mt-4 text-[clamp(32px,3.9vw,60px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            A Trusted Partner for
+            {whyContent.title}
             <span className="block">
-              Your <span className="text-[#f26a1b]">Cybersecurity</span> Needs
+              {whyContent.titlePrefix}{" "}
+              <span className="text-[#f26a1b]">{whyContent.titleAccent}</span>{" "}
+              {whyContent.titleSuffix}
             </span>
           </h2>
 
           <p className="mt-5 max-w-[620px] text-[15px] leading-[1.65] text-[#23262b] sm:text-[18px]">
-            We combine expert knowledge, proven processes, and proactive
-            technologies to keep your business secure, compliant, and
-            future-ready.
+            {whyContent.description}
           </p>
 
           {/* Image with orange brackets */}
@@ -123,8 +96,8 @@ export default function CyberWhyChooseUs() {
 
             <div className="absolute inset-0 overflow-hidden rounded-[16px] shadow-[0_14px_34px_rgba(0,0,0,0.2)]">
               <Image
-                src="/images/cyber-about-main.webp"
-                alt="Security analyst monitoring a global threat map"
+                src={whyContent.image}
+                alt={whyContent.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 90vw, 600px"
                 className="object-cover object-center"
@@ -141,7 +114,7 @@ export default function CyberWhyChooseUs() {
             className="absolute bottom-[56px] left-[26px] top-[56px] hidden w-px bg-[#c9c9c9] sm:block lg:left-[27px]"
           />
 
-          {reasons.map((reason) => (
+          {whyContent.features.map((reason) => (
             <div key={reason.number} className="relative flex items-center">
               {/* Number pill */}
               <span className="relative z-10 grid h-[58px] w-[52px] shrink-0 place-items-center rounded-full bg-white text-[19px] font-bold text-[#14161a] shadow-[0_6px_16px_rgba(0,0,0,0.1)] sm:h-[72px] sm:w-[54px] sm:text-[22px]">
@@ -154,7 +127,7 @@ export default function CyberWhyChooseUs() {
               {/* Card */}
               <article className="ml-3 flex flex-1 items-center gap-4 rounded-[18px] border border-[#eee8e8] bg-white px-4 py-4 shadow-[0_8px_22px_rgba(0,0,0,0.07)] sm:ml-0 sm:gap-5 sm:px-5 sm:py-5">
                 <span className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-[14px] bg-[#fdebe3] text-[#f26a1b] sm:h-[74px] sm:w-[74px]">
-                  {reason.icon}
+                  {reasonIcons[reason.icon]}
                 </span>
                 <div>
                   <h3 className="text-[17px] font-bold leading-tight text-[#14161a] sm:text-[21px]">

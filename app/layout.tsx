@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/CyberFooter";
+import categoryData from "@/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cyvanta Cyber Security",
-  description: "Cyber security solutions for your business",
+  title: categoryData.common.site.name,
+  description: categoryData.common.site.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -3,15 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import categoryData from "@/data";
 
-const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Our Services", href: "#services" },
-  { label: "Why Choose Us", href: "#why-choose-us" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact Us", href: "#contact" },
-];
+const site = categoryData.common.site;
+const quickLinks = categoryData.footer.quickLinks;
 
 const iconProps = {
   viewBox: "0 0 24 24",
@@ -30,8 +25,8 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
         <path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
       </svg>
     ),
-    text: "+91 98765 43210",
-    href: "tel:+919876543210",
+    text: site.phone,
+    href: site.phoneHref,
   },
   {
     icon: (
@@ -40,8 +35,8 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
         <path d="m3.500 7 8.500 6.500L20.500 7" />
       </svg>
     ),
-    text: "info@cyvanta.com",
-    href: "mailto:info@cyvanta.com",
+    text: site.email,
+    href: site.emailHref,
   },
   {
     icon: (
@@ -52,9 +47,9 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
     ),
     text: (
       <>
-        123, Cyber Street, Tech Park,
+        {site.addressLine1}
         <br />
-        New Delhi &ndash; 110016
+        {site.addressLine2}
       </>
     ),
   },
@@ -81,10 +76,13 @@ export default function CyberFooter() {
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-8 px-6 pb-12 pt-14 sm:gap-10 sm:px-10 md:grid-cols-[1.25fr_1fr_1.2fr] md:gap-0 lg:px-[5.8vw] lg:pt-16">
         {/* Brand */}
         <div className="col-span-2 md:col-span-1 md:pr-10">
-          <Link href="#home" aria-label="Cyvanta Cyber Security">
+          <Link
+            href={categoryData.common.navigation[0].href}
+            aria-label={site.name}
+          >
             <Image
-              src="/images/logo.png"
-              alt="Cyvanta Cyber Security"
+              src={site.logo}
+              alt={site.name}
               width={300}
               height={90}
               className="h-[78px] w-auto sm:h-[92px]"
@@ -92,15 +90,14 @@ export default function CyberFooter() {
           </Link>
 
           <p className="mt-5 max-w-[400px] text-[16px] leading-[1.65] text-[#4a4d52] sm:text-[18px]">
-            Next-generation cybersecurity solutions that protect your business,
-            data, and digital assets.
+            {site.tagline}
           </p>
         </div>
 
         {/* Quick links */}
         <div className="md:border-l md:border-[#dedede] md:px-[3.4vw]">
           <h3 className="text-[18px] font-bold text-[#14161a] sm:text-[22px] md:text-[24px]">
-            Quick Links
+            {categoryData.footer.quickLinksTitle}
           </h3>
           <span className="mt-3 block h-[5px] w-[56px] rounded-full bg-[#ee9410]" />
 
@@ -122,7 +119,7 @@ export default function CyberFooter() {
         {/* Get in touch */}
         <div className="md:border-l md:border-[#dedede] md:pl-[3.4vw]">
           <h3 className="text-[18px] font-bold text-[#14161a] sm:text-[22px] md:text-[24px]">
-            Get in Touch
+            {categoryData.footer.contactTitle}
           </h3>
           <span className="mt-3 block h-[5px] w-[56px] rounded-full bg-[#ee9410]" />
 
@@ -169,7 +166,7 @@ export default function CyberFooter() {
         <div className="relative overflow-hidden bg-[#25272d]">
           <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 sm:px-10 lg:px-[5.8vw]">
             <p className="text-[15px] text-white sm:text-[18px]">
-              &copy; 2026 CYVANTA. All Rights Reserved. Powered by Lestow.
+              {categoryData.footer.copyright}
             </p>
           </div>
 

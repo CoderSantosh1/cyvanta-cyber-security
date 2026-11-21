@@ -1,39 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import categoryData from "@/data";
 
-type Faq = {
-  question: string;
-  answer: string;
-};
-
-const faqs: Faq[] = [
-  {
-    question: "What cybersecurity services do you provide?",
-    answer:
-      "We provide threat detection and response, vulnerability assessment, data security and encryption, cloud security, identity and access management, 24/7 security monitoring (SOC), compliance and risk management, and expert consulting and advisory.",
-  },
-  {
-    question: "How do you protect businesses from cyber attacks?",
-    answer:
-      "We use a combination of proactive monitoring, threat detection, vulnerability management, and robust security controls to identify, prevent, and respond to cyber threats in real time.",
-  },
-  {
-    question: "Do you offer 24/7 security monitoring?",
-    answer:
-      "Yes. Our Security Operations Center (SOC) monitors your environment around the clock, so threats are detected and handled quickly, day or night.",
-  },
-  {
-    question: "Is my company data safe with your services?",
-    answer:
-      "Absolutely. We follow strict access controls, encryption standards and industry best practices, and we keep your data confidential at every stage of our engagement.",
-  },
-  {
-    question: "Do you provide cybersecurity for small businesses?",
-    answer:
-      "Yes. We offer flexible and scalable solutions designed for organizations of every size, from startups and small businesses to large enterprises.",
-  },
-];
+const faqContent = categoryData.faqs;
+const contactHref = categoryData.common.site.contactHref;
 
 function BubbleIcon() {
   return (
@@ -72,14 +43,15 @@ export default function CyberFAQs() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              FAQs
+              {faqContent.eyebrow}
             </span>
           </div>
 
           <h2 className="mt-5 text-[clamp(32px,3.9vw,60px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            Frequently Asked
+            {faqContent.title}
             <span className="block">
-              Questions <span className="text-[#f26a1b]">Answered</span>
+              {faqContent.titlePrefix}{" "}
+              <span className="text-[#f26a1b]">{faqContent.titleAccent}</span>
             </span>
           </h2>
 
@@ -116,19 +88,18 @@ export default function CyberFAQs() {
               <BubbleIcon />
 
               <h3 className="mt-4 text-[26px] font-bold text-[#14161a] sm:text-[30px]">
-                Still Have a Question?
+                {faqContent.calloutTitle}
               </h3>
 
               <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#2d3036] sm:text-[17px]">
-                Can&rsquo;t find the answer you&rsquo;re looking for? Our team
-                is here to help you with any cybersecurity-related inquiries.
+                {faqContent.calloutDescription}
               </p>
 
               <a
-                href="#contact"
+                href={contactHref}
                 className="mt-6 inline-flex items-center gap-3 rounded-[10px] bg-[#f26a1b] px-6 py-3 text-[16px] font-semibold text-white shadow-[0_6px_14px_rgba(238,95,8,0.3)] transition hover:brightness-105"
               >
-                Contact Us
+                {faqContent.contactButtonLabel}
                 <svg viewBox="0 0 28 16" className="h-4 w-6" fill="none">
                   <path
                     d="M1 8h24M19 2l6 6-6 6"
@@ -145,7 +116,7 @@ export default function CyberFAQs() {
 
         {/* Right: accordion */}
         <div className="flex w-full flex-col gap-4 lg:gap-[18px]">
-          {faqs.map((faq, index) => {
+          {faqContent.items.map((faq, index) => {
             const isOpen = openIndex === index;
             const panelId = `faq-panel-${index}`;
             const buttonId = `faq-button-${index}`;

@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Site content
+
+Site copy, navigation, services, testimonials, FAQs, and contact details are stored in [`data/category.json`](./data/category.json). The corresponding TypeScript structure is defined in [`types/category.ts`](./types/category.ts).
+
 ## Getting Started
 
 First, run the development server:

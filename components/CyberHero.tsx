@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { Fragment } from "react";
+import categoryData from "@/data";
 
 export default function CyberHero() {
+  const { hero } = categoryData;
+
   return (
     <section
       id="home"
@@ -10,8 +14,8 @@ export default function CyberHero() {
     >
       {/* Background image (shield + circuit board) */}
       <Image
-        src="/images/cyber-hero-bg.webp"
-        alt="Glowing cybersecurity shield with a padlock on a circuit board"
+        src={hero.image}
+        alt={hero.imageAlt}
         fill
         priority
         sizes="100vw"
@@ -29,12 +33,19 @@ export default function CyberHero() {
 
           {/* Heading */}
           <h1 className="mt-8 text-[clamp(34px,4.1vw,66px)] font-medium leading-[1.12] tracking-[-0.02em] text-white sm:mt-9">
-            Next Generation
+            {hero.titleBefore}
             <span className="block font-bold text-[#e8590c]">
-              Cybersecurity
+              {hero.titleAccent}
             </span>
-            Solutions For A Safer
-            <span className="block">Digital World</span>
+            {hero.titleAfter.map((line, index) =>
+              index === 0 ? (
+                <Fragment key={line}>{line}</Fragment>
+              ) : (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ),
+            )}
           </h1>
 
           {/* Bottom accent line */}
@@ -42,9 +53,7 @@ export default function CyberHero() {
 
           {/* Description */}
           <p className="mt-7 max-w-[540px] text-[15px] font-medium leading-[1.75] tracking-[0.2px] text-[#d9d9d9] sm:text-[17px]">
-            Protect Your Digital Infrastructure With Advanced Cybersecurity
-            Solutions Designed To Detect Threats, Secure Data, And Keep Your
-            Business One Step Ahead.
+            {hero.description}
           </p>
         </div>
       </div>

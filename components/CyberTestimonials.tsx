@@ -1,69 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import categoryData from "@/data";
 
-type Testimonial = {
-  name: string;
-  role: string;
-  quote: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Rahul Mehta",
-    role: "IT Director, NexaTech",
-    quote:
-      "CYVANTA has significantly strengthened our security posture. Their proactive approach and expert support give us complete peace of mind.",
-  },
-  {
-    name: "Priya Sharma",
-    role: "CTO, Finora Solutions",
-    quote:
-      "The team is knowledgeable, responsive, and truly understands our business needs. Their security solutions are robust, scalable, and easy to manage.",
-  },
-  {
-    name: "Amit Verma",
-    role: "CEO, DataBridge",
-    quote:
-      "A reliable cybersecurity partner! CYVANTA helped us identify risks early and implement strong, long-term protection for our digital assets.",
-  },
-  {
-    name: "Sneha Kapoor",
-    role: "CISO, CloudNest",
-    quote:
-      "Their 24/7 monitoring caught threats we never knew existed. Response times are fast and the reporting is clear and actionable.",
-  },
-  {
-    name: "Vikram Singh",
-    role: "Head of IT, Orbit Logistics",
-    quote:
-      "From the first assessment to ongoing support, the CYVANTA team has been professional and thorough. We feel far more secure today.",
-  },
-  {
-    name: "Neha Gupta",
-    role: "COO, FinEdge Capital",
-    quote:
-      "They made compliance simple. Audits that used to take weeks now run smoothly, and our whole team understands the security roadmap.",
-  },
-  {
-    name: "Arjun Nair",
-    role: "CTO, MediSync Health",
-    quote:
-      "Protecting patient data is critical for us. CYVANTA delivered a tailored solution that is secure, scalable and easy for our staff to use.",
-  },
-  {
-    name: "Pooja Malhotra",
-    role: "Director, RetailHub",
-    quote:
-      "Excellent service and clear communication. They explain risks in plain language and always propose practical, cost-effective fixes.",
-  },
-  {
-    name: "Karan Joshi",
-    role: "Founder, AppForge",
-    quote:
-      "As a growing startup we needed security that scales with us. CYVANTA gave us enterprise-level protection without slowing the team down.",
-  },
-];
+const testimonialsContent = categoryData.testimonials;
+const testimonials = testimonialsContent.items;
 
 function usePerPage() {
   const [perPage, setPerPage] = useState(3);
@@ -81,9 +22,9 @@ function usePerPage() {
   return perPage;
 }
 
-function Stars() {
+function Stars({ label }: { label: string }) {
   return (
-    <div className="flex shrink-0 gap-[3px]" aria-label="5 out of 5 stars">
+    <div className="flex shrink-0 gap-[3px]" aria-label={label}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
@@ -99,7 +40,11 @@ function Stars() {
   );
 }
 
-function TestimonialCard({ item }: { item: Testimonial }) {
+function TestimonialCard({
+  item,
+}: {
+  item: (typeof testimonials)[number];
+}) {
   const initials = item.name
     .split(" ")
     .map((part) => part[0])
@@ -141,7 +86,7 @@ function TestimonialCard({ item }: { item: Testimonial }) {
           </p>
         </div>
 
-        <Stars />
+        <Stars label={testimonialsContent.ratingLabel} />
       </div>
 
       {/* Orange bottom accent */}
@@ -183,18 +128,19 @@ export default function CyberTestimonials() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-12 bg-[#f26a1b] sm:w-[50px]" />
             <span className="text-[22px] font-semibold text-[#14161a] sm:text-[27px]">
-              Testimonials
+              {testimonialsContent.eyebrow}
             </span>
             <span className="h-[4px] w-12 bg-[#f26a1b] sm:w-[50px]" />
           </div>
 
           <h2 className="mt-3 text-[clamp(32px,3.8vw,58px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            What Our <span className="text-[#f26a1b]">Clients</span> Say
+            {testimonialsContent.title}{" "}
+            <span className="text-[#f26a1b]">{testimonialsContent.titleAccent}</span>{" "}
+            {testimonialsContent.titleSuffix}
           </h2>
 
           <p className="mt-5 max-w-[800px] text-[15px] leading-[1.6] text-[#23262b] sm:text-[18px]">
-            Trusted by businesses across industries for reliable and effective
-            cybersecurity solutions.
+            {testimonialsContent.description}
           </p>
         </div>
 
@@ -210,7 +156,7 @@ export default function CyberTestimonials() {
           <button
             type="button"
             onClick={prev}
-            aria-label="Previous testimonials"
+            aria-label={categoryData.common.accessibility.previousTestimonials}
             className="grid h-[42px] w-[42px] place-items-center rounded-[10px] border border-[#d9d9d9] bg-white text-[#14161a] shadow-sm transition hover:border-[#f26a1b] hover:text-[#f26a1b]"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
@@ -230,7 +176,10 @@ export default function CyberTestimonials() {
                 key={i}
                 type="button"
                 onClick={() => setPage(i)}
-                aria-label={`Go to testimonials page ${i + 1}`}
+                aria-label={categoryData.common.accessibility.testimonialPageLabel.replace(
+                  "{page}",
+                  String(i + 1),
+                )}
                 aria-current={i === current}
                 className={`rounded-full transition-all ${
                   i === current
@@ -244,7 +193,7 @@ export default function CyberTestimonials() {
           <button
             type="button"
             onClick={next}
-            aria-label="Next testimonials"
+            aria-label={categoryData.common.accessibility.nextTestimonials}
             className="grid h-[42px] w-[42px] place-items-center rounded-[10px] border border-[#d9d9d9] bg-white text-[#14161a] shadow-sm transition hover:border-[#f26a1b] hover:text-[#f26a1b]"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">

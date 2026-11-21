@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
+import categoryData from "@/data";
+import type { AboutIconKey } from "@/types/category";
 
-type Feature = {
-  title: ReactNode;
-  icon: ReactNode;
-};
+const about = categoryData.about;
 
 const iconProps = {
   viewBox: "0 0 32 32",
@@ -44,38 +43,11 @@ const TeamIcon = (
   </svg>
 );
 
-const features: Feature[] = [
-  {
-    title: (
-      <>
-        Proactive
-        <br />
-        Threat Defense
-      </>
-    ),
-    icon: ShieldCheckIcon,
-  },
-  {
-    title: (
-      <>
-        End-to-End
-        <br />
-        Security Solutions
-      </>
-    ),
-    icon: LayersIcon,
-  },
-  {
-    title: (
-      <>
-        Expert
-        <br />
-        Security Team
-      </>
-    ),
-    icon: TeamIcon,
-  },
-];
+const featureIcons: Record<AboutIconKey, ReactNode> = {
+  shieldCheck: ShieldCheckIcon,
+  layers: LayersIcon,
+  team: TeamIcon,
+};
 
 export default function CyberAbout() {
   return (
@@ -116,8 +88,8 @@ export default function CyberAbout() {
           {/* Large image */}
           <div className="absolute left-[4%] right-[4%] top-0 bottom-[3%] overflow-hidden rounded-[14px] shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:right-[3%]">
             <Image
-              src="/images/cyber-about-main.webp"
-              alt="Security analyst monitoring cybersecurity dashboards"
+              src={about.image}
+              alt={about.imageAlt}
               fill
               sizes="(max-width: 1024px) 90vw, 560px"
               className="object-cover object-center"
@@ -127,8 +99,8 @@ export default function CyberAbout() {
           {/* Small image */}
           <div className="absolute bottom-[-4%] left-[-1%] z-10 h-[34%] w-[48%] overflow-hidden rounded-[14px] border-[4px] border-white shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
             <Image
-              src="/images/cyber-about-small.webp"
-              alt="Glowing padlock on a circuit board"
+              src={about.accentImage}
+              alt={about.accentImageAlt}
               fill
               sizes="(max-width: 1024px) 45vw, 280px"
               className="object-cover object-center"
@@ -141,36 +113,41 @@ export default function CyberAbout() {
           <span className="block h-[4px] w-14 bg-[#f26a1b]" />
 
           <p className="mt-5 text-[22px] font-medium text-[#14161a] sm:text-[27px]">
-            About Us
+            {about.eyebrow}
           </p>
 
           <h2 className="mt-1 text-[clamp(32px,3.7vw,58px)] font-bold leading-[1.1] tracking-[-0.025em] text-[#14161a]">
-            Securing Businesses
+            {about.title}
             <span className="block">
-              In A <span className="text-[#f26a1b]">Digital-First</span> World
+              {about.titlePrefix}{" "}
+              <span className="text-[#f26a1b]">{about.titleAccent}</span>{" "}
+              {about.titleSuffix}
             </span>
           </h2>
 
           <p className="mt-6 max-w-[560px] text-[15px] leading-[1.8] text-[#23262b] sm:text-[17px]">
-            At CYVANTA, we deliver next-generation cybersecurity solutions that
-            help organizations stay protected, resilient, and compliant in an
-            ever-evolving threat landscape.
+            {about.description}
           </p>
 
           {/* Features */}
           <div className="mt-9 grid w-full max-w-[640px] gap-8 sm:grid-cols-3 sm:gap-0">
-            {features.map((feature, index) => (
+            {about.features.map((feature, index) => (
               <div
-                key={index}
+                key={feature.titleLines.join("-")}
                 className={`flex flex-col items-start ${
                   index > 0 ? "sm:border-l sm:border-[#e0dcdc] sm:pl-7" : "sm:pr-7"
                 }`}
               >
                 <span className="grid h-[58px] w-[58px] place-items-center rounded-[12px] bg-[#fdebe3] text-[#f26a1b]">
-                  {feature.icon}
+                  {featureIcons[feature.icon]}
                 </span>
                 <h3 className="mt-5 text-[17px] font-bold leading-[1.3] text-[#14161a] sm:text-[18px]">
-                  {feature.title}
+                  {feature.titleLines.map((line, lineIndex) => (
+                    <Fragment key={line}>
+                      {line}
+                      {lineIndex < feature.titleLines.length - 1 && <br />}
+                    </Fragment>
+                  ))}
                 </h3>
               </div>
             ))}

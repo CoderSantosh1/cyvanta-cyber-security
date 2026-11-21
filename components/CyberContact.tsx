@@ -1,17 +1,13 @@
 "use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
+import categoryData from "@/data";
 
-const services = [
-  "Threat Detection & Response",
-  "Vulnerability Assessment",
-  "Data Security & Encryption",
-  "Cloud Security",
-  "Identity & Access Management",
-  "Security Monitoring (SOC)",
-  "Compliance & Risk Management",
-  "Consulting & Advisory",
-];
+const contactContent = categoryData.contact;
+const contactInfo = contactContent.information;
+const contactForm = contactContent.form;
+const site = categoryData.common.site;
+const services = categoryData.services.items;
 
 const svgProps = {
   viewBox: "0 0 24 24",
@@ -116,7 +112,7 @@ export default function CyberContact() {
     const phone = String(data.get("phone"));
     const service = String(data.get("service"));
     const message = String(data.get("message"));
-    const subject = `Cybersecurity inquiry from ${name}`;
+    const subject = `${contactForm.emailSubjectPrefix} ${name}`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
@@ -127,7 +123,7 @@ export default function CyberContact() {
     ].join("\n");
 
     setEmailDraft(
-      `mailto:info@cyvanta.com?${new URLSearchParams({ subject, body })}`,
+      `mailto:${site.email}?${new URLSearchParams({ subject, body })}`,
     );
   };
 
@@ -142,63 +138,64 @@ export default function CyberContact() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              Contact Us
+              {contactContent.eyebrow}
             </span>
           </div>
 
           <h2 className="mt-5 text-[clamp(32px,3.9vw,60px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            Get in Touch With Our
+            {contactContent.title}
             <span className="block text-[#f26a1b]">
-              Cyber Security{" "}
-              <span className="text-[#14161a]">Experts</span>
+              {contactContent.titleAccent}{" "}
+              <span className="text-[#14161a]">
+                {contactContent.titleSuffix}
+              </span>
             </span>
           </h2>
 
           <p className="mt-5 max-w-[560px] text-[16px] leading-[1.65] text-[#2d3036] sm:text-[19px]">
-            Have questions or need a custom cybersecurity solution? Reach out to
-            our team &mdash; we&rsquo;re here to help.
+            {contactContent.description}
           </p>
 
           {/* Info grid */}
           <div className="mt-9 grid w-full max-w-[640px] sm:grid-cols-2">
             <div className="space-y-6 pb-0 sm:border-r sm:border-[#e3dede] sm:pr-8">
               <div className="border-b border-[#e3dede] pb-6">
-                <InfoCard icon={<PinIcon />} title="Our Location">
-                  123, Cyber Street, Tech Park,
+                <InfoCard icon={<PinIcon />} title={contactInfo.locationTitle}>
+                  {site.addressLine1}
                   <br />
-                  New Delhi &ndash; 110016
+                  {site.addressLine2}
                 </InfoCard>
               </div>
 
-              <InfoCard icon={<MailIcon />} title="Email Us">
+              <InfoCard icon={<MailIcon />} title={contactInfo.emailTitle}>
                 <a
-                  href="mailto:info@cyvanta.com"
+                  href={site.emailHref}
                   className="font-semibold text-[#f26a1b] hover:underline"
                 >
-                  info@cyvanta.com
+                  {site.email}
                 </a>
-                <p className="mt-1 text-[#4a4d52]">We reply within 24 hours</p>
+                <p className="mt-1 text-[#4a4d52]">{contactInfo.responseTime}</p>
               </InfoCard>
             </div>
 
             <div className="mt-6 space-y-6 sm:mt-0 sm:pl-8">
               <div className="border-b border-[#e3dede] pb-6">
-                <InfoCard icon={<PhoneIcon />} title="Call Us">
+                <InfoCard icon={<PhoneIcon />} title={contactInfo.phoneTitle}>
                   <a
-                    href="tel:+919876543210"
+                    href={site.phoneHref}
                     className="font-semibold text-[#f26a1b] hover:underline"
                   >
-                    +91 98765 43210
+                    {site.phone}
                   </a>
                   <p className="mt-1 text-[#4a4d52]">
-                    Mon &ndash; Sat | 9:00 AM &ndash; 6:00 PM
+                    {contactInfo.schedule}
                   </p>
                 </InfoCard>
               </div>
 
-              <InfoCard icon={<ClockIcon />} title="Working Hours">
-                <p className="font-medium text-[#14161a]">Mon &ndash; Sat</p>
-                <p className="text-[#23262b]">9:00 AM &ndash; 6:00 PM</p>
+              <InfoCard icon={<ClockIcon />} title={contactInfo.workingHoursTitle}>
+                <p className="font-medium text-[#14161a]">{contactInfo.days}</p>
+                <p className="text-[#23262b]">{contactInfo.hours}</p>
               </InfoCard>
             </div>
           </div>
@@ -224,7 +221,7 @@ export default function CyberContact() {
                   <ChatIcon className="h-[42px] w-[42px]" />
                 </span>
                 <h3 className="text-[24px] font-bold text-white sm:text-[30px]">
-                  Send Us a Message
+                  {contactForm.title}
                 </h3>
               </div>
 
@@ -249,8 +246,8 @@ export default function CyberContact() {
                     name="name"
                     type="text"
                     required
-                    placeholder="Your Name*"
-                    aria-label="Your name"
+                    placeholder={contactForm.namePlaceholder}
+                    aria-label={contactForm.namePlaceholder.replace("*", "")}
                     className={inputBase}
                   />
                 </label>
@@ -261,8 +258,8 @@ export default function CyberContact() {
                     name="email"
                     type="email"
                     required
-                    placeholder="Your Email*"
-                    aria-label="Your email"
+                    placeholder={contactForm.emailPlaceholder}
+                    aria-label={contactForm.emailPlaceholder.replace("*", "")}
                     className={inputBase}
                   />
                 </label>
@@ -275,10 +272,10 @@ export default function CyberContact() {
                   type="tel"
                   inputMode="tel"
                   required
-                  placeholder="Phone Number*"
-                  aria-label="Phone number"
-                  pattern="[0-9+() .-]{7,20}"
-                  title="Enter a phone number using 7 to 20 digits, spaces, or + ( ) . -"
+                  placeholder={contactForm.phonePlaceholder}
+                  aria-label={contactForm.phonePlaceholder.replace("*", "")}
+                  pattern={contactForm.phonePattern}
+                  title={contactForm.phoneValidationMessage}
                   className={inputBase}
                 />
               </label>
@@ -289,15 +286,15 @@ export default function CyberContact() {
                   name="service"
                   required
                   defaultValue=""
-                  aria-label="Select service"
+                  aria-label={contactForm.servicePlaceholder}
                   className={`${inputBase} cursor-pointer`}
                 >
                   <option value="" disabled>
-                    Select Service
+                    {contactForm.servicePlaceholder}
                   </option>
                   {services.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
+                    <option key={service.label} value={service.label}>
+                      {service.label}
                     </option>
                   ))}
                 </select>
@@ -309,8 +306,8 @@ export default function CyberContact() {
                   name="message"
                   required
                   rows={4}
-                  placeholder="Your Message*"
-                  aria-label="Your message"
+                  placeholder={contactForm.messagePlaceholder}
+                  aria-label={contactForm.messagePlaceholder.replace("*", "")}
                   className={`${inputBase} resize-y py-0`}
                 />
               </label>
@@ -319,7 +316,7 @@ export default function CyberContact() {
                 type="submit"
                 className="mt-5 flex w-full items-center justify-center gap-4 rounded-[10px] bg-gradient-to-b from-[#fa7420] to-[#ee5f08] py-3.5 text-[18px] font-semibold text-white shadow-[0_8px_18px_rgba(238,95,8,0.35)] transition hover:brightness-105 sm:text-[20px]"
               >
-                Send Message
+                {contactForm.submitLabel}
                 <svg viewBox="0 0 28 16" className="h-4 w-6" fill="none">
                   <path
                     d="M1 8h24M19 2l6 6-6 6"
@@ -336,12 +333,12 @@ export default function CyberContact() {
                   role="status"
                   className="mt-4 text-center text-[15px] font-medium text-[#2e7d32]"
                 >
-                  Your message is ready.{" "}
+                  {contactForm.successMessage}{" "}
                   <a
                     href={emailDraft}
                     className="font-bold underline underline-offset-2"
                   >
-                    Open your email app to send it.
+                    {contactForm.emailActionLabel}
                   </a>
                 </p>
               )}

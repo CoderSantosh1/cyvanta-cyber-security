@@ -3,24 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import categoryData from "@/data";
 
-const navLinks = [
-  { label: "Home", href: "#home", id: "home" },
-  { label: "About Us", href: "#about", id: "about" },
-  { label: "Our Services", href: "#services", id: "services" },
-  { label: "Why Choose Us", href: "#why-choose-us", id: "why-choose-us" },
-  { label: "Testimonials", href: "#testimonials", id: "testimonials" },
-  { label: "FAQs", href: "#faqs", id: "faqs" },
-];
+const site = categoryData.common.site;
+const navLinks = categoryData.common.navigation.map((link) => ({
+  ...link,
+  id: link.href.slice(1),
+}));
 
 const sectionIds = [...navLinks.map(({ id }) => id), "contact"];
 
 function Logo() {
   return (
-    <Link href="#home" className="flex items-center" aria-label="Cyvanta Cyber Security">
+    <Link
+      href={categoryData.common.navigation[0].href}
+      className="flex items-center"
+      aria-label={site.name}
+    >
       <Image
-        src="/images/logo.png"
-        alt="Cyvanta Cyber Security"
+        src={site.logo}
+        alt={site.name}
         width={300}
         height={80}
         priority
@@ -114,7 +116,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav
-          aria-label="Main"
+          aria-label={categoryData.common.navigationLabels.main}
           className="hidden flex-1 items-center justify-start gap-9 pl-9 lg:flex xl:gap-11"
         >
           {navLinks.map((link) => {
@@ -141,7 +143,7 @@ export default function Navbar() {
 
         {/* Contact button (skewed) */}
         <Link
-          href="#contact"
+          href={site.contactHref}
           aria-current={active === "contact" ? "page" : undefined}
           className="group relative hidden shrink-0 lg:block"
         >
@@ -151,7 +153,7 @@ export default function Navbar() {
             }`}
           >
             <span className="flex skew-x-[18deg] items-center gap-2 text-[17px] font-bold text-white">
-              Contact Us
+              {site.contactButtonLabel}
               <ArrowRight />
             </span>
           </span>
@@ -163,7 +165,11 @@ export default function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={
+            open
+              ? categoryData.common.accessibility.closeMenu
+              : categoryData.common.accessibility.openMenu
+          }
           className="grid h-11 w-11 place-items-center rounded-md border border-[#e3e3e3] text-[#1f2023] lg:hidden"
         >
           <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
@@ -196,7 +202,10 @@ export default function Navbar() {
         }`}
       >
         <div className="overflow-hidden">
-          <nav aria-label="Mobile" className="flex flex-col px-5 py-4 sm:px-8">
+          <nav
+            aria-label={categoryData.common.navigationLabels.mobile}
+            className="flex flex-col px-5 py-4 sm:px-8"
+          >
             {navLinks.map((link) => {
               const isActive = active === link.id;
               return (
@@ -215,14 +224,14 @@ export default function Navbar() {
             })}
 
             <Link
-              href="#contact"
+              href={site.contactHref}
               onClick={() => setOpen(false)}
               aria-current={active === "contact" ? "page" : undefined}
               className={`mt-4 inline-flex items-center justify-center gap-2 rounded-[10px] bg-[#25272b] px-6 py-3 text-[17px] font-bold text-white ${
                 active === "contact" ? "ring-2 ring-[#f26a1b]" : ""
               }`}
             >
-              Contact Us
+              {site.contactButtonLabel}
               <ArrowRight />
             </Link>
           </nav>

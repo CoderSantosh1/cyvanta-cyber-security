@@ -1,12 +1,11 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
+import categoryData from "@/data";
+import type { ServiceIconKey } from "@/types/category";
 
-type Service = {
-  title: ReactNode;
-  description: string;
-  icon: ReactNode;
-};
+const servicesContent = categoryData.services;
+type Service = (typeof servicesContent.items)[number];
 
 const iconProps = {
   viewBox: "0 0 40 40",
@@ -86,107 +85,31 @@ const HeadsetIcon = (
   </svg>
 );
 
-const services: Service[] = [
-  {
-    title: (
-      <>
-        Threat Detection
-        <br />
-        &amp; Response
-      </>
-    ),
-    description: "Identify, analyze, and neutralize threats in real time.",
-    icon: ShieldCheckIcon,
-  },
-  {
-    title: (
-      <>
-        Vulnerability
-        <br />
-        Assessment
-      </>
-    ),
-    description: "Find and fix security gaps before they’re exploited.",
-    icon: LayersIcon,
-  },
-  {
-    title: (
-      <>
-        Data Security
-        <br />
-        &amp; Encryption
-      </>
-    ),
-    description: "Keep your critical data confidential and protected.",
-    icon: LockIcon,
-  },
-  {
-    title: (
-      <>
-        Cloud
-        <br />
-        Security
-      </>
-    ),
-    description: "Secure your cloud environment across platforms and workloads.",
-    icon: CloudLockIcon,
-  },
-  {
-    title: (
-      <>
-        Identity &amp; Access
-        <br />
-        Management
-      </>
-    ),
-    description: "Control, monitor, and manage user access with confidence.",
-    icon: UsersIcon,
-  },
-  {
-    title: (
-      <>
-        Security
-        <br />
-        Monitoring (SOC)
-      </>
-    ),
-    description: "24/7 surveillance and proactive threat management.",
-    icon: MonitorIcon,
-  },
-  {
-    title: (
-      <>
-        Compliance
-        <br />
-        &amp; Risk Management
-      </>
-    ),
-    description: "Stay compliant with industry standards and reduce security risks.",
-    icon: ShieldStarIcon,
-  },
-  {
-    title: (
-      <>
-        Consulting
-        <br />
-        &amp; Advisory
-      </>
-    ),
-    description:
-      "Expert guidance to build a stronger, more resilient security posture.",
-    icon: HeadsetIcon,
-  },
-];
+const serviceIcons: Record<ServiceIconKey, ReactNode> = {
+  shieldCheck: ShieldCheckIcon,
+  layers: LayersIcon,
+  lock: LockIcon,
+  cloudLock: CloudLockIcon,
+  users: UsersIcon,
+  monitor: MonitorIcon,
+  shieldStar: ShieldStarIcon,
+  headset: HeadsetIcon,
+};
 
 function ServiceCard({ service }: { service: Service }) {
   return (
     <article className="group relative flex flex-col rounded-[14px] border border-[#ece7e7] bg-white px-5 pb-6 pt-5 shadow-[0_6px_18px_rgba(0,0,0,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(242,106,27,0.18)]">
       <div className="flex items-center gap-4">
         <span className="grid h-[66px] w-[66px] shrink-0 place-items-center rounded-[12px] bg-[#fdebe3] text-[#f26a1b]">
-          {service.icon}
+          {serviceIcons[service.icon]}
         </span>
         <h3 className="text-[19px] font-bold leading-[1.25] text-[#14161a] xl:text-[21px]">
-          {service.title}
+          {service.titleLines.map((line, index) => (
+            <Fragment key={line}>
+              {line}
+              {index < service.titleLines.length - 1 && <br />}
+            </Fragment>
+          ))}
         </h3>
       </div>
 
@@ -212,26 +135,26 @@ export default function CyberServices() {
           <div className="flex items-center gap-4">
             <span className="h-px w-14 bg-[#14161a] sm:w-[76px]" />
             <span className="text-[22px] font-semibold text-[#14161a] sm:text-[27px]">
-              Our Services
+              {servicesContent.eyebrow}
             </span>
             <span className="h-px w-14 bg-[#14161a] sm:w-[76px]" />
           </div>
 
           <h2 className="mt-3 text-[clamp(28px,3.3vw,50px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#14161a]">
-            Comprehensive <span className="text-[#f26a1b]">Cybersecurity</span>{" "}
-            Services
+            {servicesContent.title}{" "}
+            <span className="text-[#f26a1b]">{servicesContent.titleAccent}</span>{" "}
+            {servicesContent.titleSuffix}
           </h2>
 
           <p className="mt-5 max-w-[700px] text-[15px] leading-[1.7] text-[#23262b] sm:text-[17px]">
-            End-to-end security solutions to protect your business, data, and
-            digital infrastructure from today&rsquo;s evolving cyber threats.
+            {servicesContent.description}
           </p>
         </div>
 
         {/* Cards */}
         <div className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+          {servicesContent.items.map((service) => (
+            <ServiceCard key={service.label} service={service} />
           ))}
         </div>
       </div>
