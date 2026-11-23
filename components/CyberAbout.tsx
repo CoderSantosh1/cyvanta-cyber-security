@@ -109,7 +109,7 @@ export default function CyberAbout() {
         </div>
 
         {/* Right: content */}
-        <div className="relative z-10 flex w-full flex-col items-start">
+        <div className="relative z-10 flex w-full flex-col items-center text-center sm:items-start sm:text-left">
           <span className="block h-[4px] w-14 bg-[#f26a1b]" />
 
           <p className="mt-5 text-[22px] font-medium text-[#14161a] sm:text-[27px]">
@@ -134,7 +134,7 @@ export default function CyberAbout() {
             {about.features.map((feature, index) => (
               <div
                 key={feature.titleLines.join("-")}
-                className={`flex flex-col items-start ${
+                className={`flex flex-col items-center text-center sm:items-start sm:text-left ${
                   index > 0 ? "sm:border-l sm:border-[#e0dcdc] sm:pl-7" : "sm:pr-7"
                 }`}
               >

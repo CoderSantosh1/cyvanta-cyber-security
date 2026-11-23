@@ -89,7 +89,7 @@ export default function CyberFooter() {
             />
           </Link>
 
-          <p className="mt-5 max-w-[400px] text-[16px] leading-[1.65] text-[#4a4d52] sm:text-[18px]">
+          <p className="mt-5 max-w-[400px] text-[18px] leading-[1.65] text-[#4a4d52] sm:text-[22px]">
             {site.tagline}
           </p>
         </div>
