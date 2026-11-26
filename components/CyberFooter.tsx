@@ -85,7 +85,7 @@ export default function CyberFooter() {
               alt={site.name}
               width={300}
               height={90}
-              className="h-[78px] w-auto sm:h-[92px]"
+              className="h-[56px] w-auto sm:h-[92px]"
             />
           </Link>
 

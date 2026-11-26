@@ -67,7 +67,8 @@ export default function Navbar() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const headerRow = document.querySelector("header > div");
-        const activationOffset = headerRow?.getBoundingClientRect().height ?? 0;
+        const activationOffset =
+          (headerRow?.getBoundingClientRect().height ?? 0) + 12;
         let currentSection = sectionIds[0];
 
         for (const id of sectionIds) {
@@ -84,11 +85,13 @@ export default function Navbar() {
     updateActiveSection();
     window.addEventListener("scroll", updateActiveSection, { passive: true });
     window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", updateActiveSection);
     };
   }, []);
 

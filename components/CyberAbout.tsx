@@ -76,17 +76,17 @@ export default function CyberAbout() {
         />
       </svg>
 
-      <div className="mx-auto grid max-w-[1600px] items-center gap-14 px-6 py-14 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:gap-[4vw] lg:px-[5vw] lg:py-12">
+      <div className="mx-auto grid max-w-[1600px] items-center gap-14 px-6 py-14 sm:px-10 lg:grid-cols-2 lg:gap-[30px] lg:px-[5vw] lg:py-12">
         {/* Left: image composition */}
-        <div className="relative mx-auto h-[420px] w-full max-w-[560px] sm:h-[520px] lg:mx-0 lg:h-[min(520px,calc(100svh-120px))] lg:max-w-none">
+        <div className="relative mx-auto h-[420px] w-full max-w-[560px] sm:h-[520px] lg:mx-0 lg:h-[470px] lg:max-w-none">
           {/* Orange bracket — top left */}
-          <div className="absolute -top-[18px] left-[-3%] h-[52%] w-[44%] rounded-tl-[10px] border-l-[5px] border-t-[5px] border-[#f26a1b]" />
+          <div className="absolute -top-4 left-0 h-[44%] w-[42%] rounded-tl-[10px] border-l-[5px] border-t-[5px] border-[#f26a1b]" />
 
           {/* Orange bracket — bottom right */}
-          <div className="absolute -bottom-[10px] right-[-3%] h-[22%] w-[48%] rounded-br-[10px] border-b-[5px] border-r-[5px] border-[#f26a1b]" />
+          <div className="absolute -bottom-1 right-[0%] h-[18%] w-[42%] rounded-br-[8px] border-b-[5px] border-r-[5px] border-[#f26a1b]" />
 
           {/* Large image */}
-          <div className="absolute left-[4%] right-[4%] top-0 bottom-[3%] overflow-hidden rounded-[14px] shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:right-[3%]">
+          <div className="absolute inset-x-[3%] top-0 bottom-[2%] overflow-hidden rounded-[14px]">
             <Image
               src={about.image}
               alt={about.imageAlt}
@@ -97,7 +97,7 @@ export default function CyberAbout() {
           </div>
 
           {/* Small image */}
-          <div className="absolute bottom-[-4%] left-[-1%] z-10 h-[34%] w-[48%] overflow-hidden rounded-[14px] border-[4px] border-white shadow-[0_14px_30px_rgba(0,0,0,0.25)]">
+          <div className="absolute bottom-0 left-0 z-10 h-[34%] w-[46%] overflow-hidden rounded-[14px] border-[4px] border-white">
             <Image
               src={about.accentImage}
               alt={about.accentImageAlt}
