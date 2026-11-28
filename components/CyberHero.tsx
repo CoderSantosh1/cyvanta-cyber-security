@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { Fragment } from "react";
-import categoryData from "@/data";
+import { site } from "@/data";
 
 export default function CyberHero() {
-  const { hero } = categoryData;
+  const hero = site.banner;
 
   return (
     <section
@@ -14,8 +14,8 @@ export default function CyberHero() {
     >
       {/* Background image (shield + circuit board) */}
       <Image
-        src={hero.image}
-        alt={hero.imageAlt}
+        src={hero.bgImage}
+        alt={hero.bgImageAlt}
         fill
         priority
         sizes="100vw"
@@ -33,11 +33,11 @@ export default function CyberHero() {
 
           {/* Heading */}
           <h1 className="mt-8 text-[clamp(34px,4.1vw,66px)] font-medium leading-[1.12] tracking-[-0.02em] text-white sm:mt-9">
-            {hero.titleBefore}
+            {hero.titlePrefix}
             <span className="block font-bold text-[#e8590c]">
-              {hero.titleAccent}
+              {hero.titleHighlight}
             </span>
-            {hero.titleAfter.map((line, index) =>
+            {hero.titleSuffixLines.map((line, index) =>
               index === 0 ? (
                 <Fragment key={line}>{line}</Fragment>
               ) : (

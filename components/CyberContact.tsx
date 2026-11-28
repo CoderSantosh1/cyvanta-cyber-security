@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, type FormEvent, type ReactNode } from "react";
-import categoryData from "@/data";
+import { site as siteData } from "@/data";
 
-const contactContent = categoryData.contact;
+const contactContent = siteData.contact;
 const contactInfo = contactContent.information;
 const contactForm = contactContent.form;
-const site = categoryData.common.site;
-const services = categoryData.services.items;
+const contactDetails = siteData.topBar;
+const services = siteData.services.services;
 
 const svgProps = {
   viewBox: "0 0 24 24",
@@ -123,7 +123,7 @@ export default function CyberContact() {
     ].join("\n");
 
     setEmailDraft(
-      `mailto:${site.email}?${new URLSearchParams({ subject, body })}`,
+      `mailto:${contactDetails.email.label}?${new URLSearchParams({ subject, body })}`,
     );
   };
 
@@ -138,14 +138,14 @@ export default function CyberContact() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              {contactContent.eyebrow}
+              {contactContent.badge}
             </span>
           </div>
 
           <h2 className="mt-5 text-[clamp(32px,3.9vw,60px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            {contactContent.title}
+            {contactContent.titlePrefix}
             <span className="block text-[#f26a1b]">
-              {contactContent.titleAccent}{" "}
+              {contactContent.titleHighlight}{" "}
               <span className="text-[#14161a]">
                 {contactContent.titleSuffix}
               </span>
@@ -161,18 +161,18 @@ export default function CyberContact() {
             <div className="space-y-6 pb-0 sm:border-r sm:border-[#e3dede] sm:pr-8">
               <div className="border-b border-[#e3dede] pb-6">
                 <InfoCard icon={<PinIcon />} title={contactInfo.locationTitle}>
-                  {site.addressLine1}
+                  {contactDetails.address.lines[0]}
                   <br />
-                  {site.addressLine2}
+                  {contactDetails.address.lines[1]}
                 </InfoCard>
               </div>
 
               <InfoCard icon={<MailIcon />} title={contactInfo.emailTitle}>
                 <a
-                  href={site.emailHref}
+                  href={contactDetails.email.href}
                   className="font-semibold text-[#f26a1b] hover:underline"
                 >
-                  {site.email}
+                  {contactDetails.email.label}
                 </a>
                 <p className="mt-1 text-[#4a4d52]">{contactInfo.responseTime}</p>
               </InfoCard>
@@ -182,10 +182,10 @@ export default function CyberContact() {
               <div className="border-b border-[#e3dede] pb-6">
                 <InfoCard icon={<PhoneIcon />} title={contactInfo.phoneTitle}>
                   <a
-                    href={site.phoneHref}
+                    href={contactDetails.phone.href}
                     className="font-semibold text-[#f26a1b] hover:underline"
                   >
-                    {site.phone}
+                    {contactDetails.phone.label}
                   </a>
                   <p className="mt-1 text-[#4a4d52]">
                     {contactInfo.schedule}
@@ -293,7 +293,7 @@ export default function CyberContact() {
                     {contactForm.servicePlaceholder}
                   </option>
                   {services.map((service) => (
-                    <option key={service.label} value={service.label}>
+                    <option key={service.id} value={service.label}>
                       {service.label}
                     </option>
                   ))}

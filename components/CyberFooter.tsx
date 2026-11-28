@@ -3,10 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import categoryData from "@/data";
+import { site as siteData } from "@/data";
 
-const site = categoryData.common.site;
-const quickLinks = categoryData.footer.quickLinks;
+const footer = siteData.footer;
+const contactDetails = siteData.topBar;
+const quickLinks = footer.quickLinks;
 
 const iconProps = {
   viewBox: "0 0 24 24",
@@ -25,8 +26,8 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
         <path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
       </svg>
     ),
-    text: site.phone,
-    href: site.phoneHref,
+    text: contactDetails.phone.label,
+    href: contactDetails.phone.href,
   },
   {
     icon: (
@@ -35,8 +36,8 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
         <path d="m3.500 7 8.500 6.500L20.500 7" />
       </svg>
     ),
-    text: site.email,
-    href: site.emailHref,
+    text: contactDetails.email.label,
+    href: contactDetails.email.href,
   },
   {
     icon: (
@@ -47,9 +48,9 @@ const contacts: { icon: ReactNode; text: ReactNode; href?: string }[] = [
     ),
     text: (
       <>
-        {site.addressLine1}
+        {contactDetails.address.lines[0]}
         <br />
-        {site.addressLine2}
+        {contactDetails.address.lines[1]}
       </>
     ),
   },
@@ -77,12 +78,12 @@ export default function CyberFooter() {
         {/* Brand */}
         <div className="col-span-2 md:col-span-1 md:pr-10">
           <Link
-            href={categoryData.common.navigation[0].href}
-            aria-label={site.name}
+            href={siteData.navbar.homeHref}
+            aria-label={siteData.brand.name}
           >
             <Image
-              src={site.logo}
-              alt={site.name}
+              src={footer.logo.src}
+              alt={footer.logo.alt}
               width={300}
               height={90}
               className="h-[56px] w-auto sm:h-[92px]"
@@ -90,20 +91,20 @@ export default function CyberFooter() {
           </Link>
 
           <p className="mt-5 max-w-[400px] text-[18px] leading-[1.65] text-[#4a4d52] sm:text-[22px]">
-            {site.tagline}
+            {footer.aboutText}
           </p>
         </div>
 
         {/* Quick links */}
         <div className="md:border-l md:border-[#dedede] md:px-[3.4vw]">
           <h3 className="text-[18px] font-bold text-[#14161a] sm:text-[22px] md:text-[24px]">
-            {categoryData.footer.quickLinksTitle}
+            {footer.quickLinksTitle}
           </h3>
           <span className="mt-3 block h-[5px] w-[56px] rounded-full bg-[#ee9410]" />
 
           <ul className="mt-5 space-y-[7px]">
             {quickLinks.map((link) => (
-              <li key={link.label}>
+              <li key={link.id}>
                 <Link
                   href={link.href}
                   className="group flex items-center gap-2 text-[14px] text-[#14161a] transition-colors hover:text-[#ee9410] sm:gap-5 sm:text-[17px] lg:text-[19px]"
@@ -119,7 +120,7 @@ export default function CyberFooter() {
         {/* Get in touch */}
         <div className="md:border-l md:border-[#dedede] md:pl-[3.4vw]">
           <h3 className="text-[18px] font-bold text-[#14161a] sm:text-[22px] md:text-[24px]">
-            {categoryData.footer.contactTitle}
+            {footer.contactTitle}
           </h3>
           <span className="mt-3 block h-[5px] w-[56px] rounded-full bg-[#ee9410]" />
 
@@ -166,7 +167,7 @@ export default function CyberFooter() {
         <div className="relative overflow-hidden bg-[#25272d]">
           <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 sm:px-10 lg:px-[5.8vw]">
             <p className="text-[15px] text-white sm:text-[18px]">
-              {categoryData.footer.copyright}
+              {footer.copyright}
             </p>
           </div>
 

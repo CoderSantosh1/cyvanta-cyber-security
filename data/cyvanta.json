@@ -1,0 +1,497 @@
+{
+  "CyvantaCyberSecurity": {
+    "templateComponents": [
+      "template-1"
+    ],
+    "sections": {
+      "Brand": {
+        "variants": {
+          "CyvantaBrand1": {
+            "name": "Cyvanta Cyber Security",
+            "tagline": "Next-generation cybersecurity solutions that protect your business, data, and digital assets.",
+            "logo": {
+              "src": "/images/logo.png",
+              "alt": "Cyvanta Cyber Security"
+            },
+            "siteTitle": "Cyvanta Cyber Security",
+            "siteDescription": "Cyber security solutions for your business"
+          }
+        }
+      },
+      "TopBar": {
+        "variants": {
+          "CyvantaTopBar1": {
+            "address": {
+              "lines": [
+                "Manhattan, NY ,",
+                "N10036, USA"
+              ]
+            },
+            "email": {
+              "label": "info@xyz.com",
+              "href": "mailto:info@xyz.com"
+            },
+            "phone": {
+              "label": "+1 000000",
+              "href": "tel:+1000000"
+            }
+          }
+        }
+      },
+      "Header": {
+        "variants": {
+          "CyvantaHeader1": {
+            "logo": {
+              "src": "/images/logo.png",
+              "alt": "Cyvanta Cyber Security"
+            },
+            "homeHref": "#home",
+            "navItems": [
+              {
+                "id": "1",
+                "label": "Home",
+                "href": "#home"
+              },
+              {
+                "id": "2",
+                "label": "About Us",
+                "href": "#about"
+              },
+              {
+                "id": "3",
+                "label": "Our Services",
+                "href": "#services"
+              },
+              {
+                "id": "4",
+                "label": "Why Choose Us",
+                "href": "#why-choose-us"
+              },
+              {
+                "id": "5",
+                "label": "Testimonials",
+                "href": "#testimonials"
+              },
+              {
+                "id": "6",
+                "label": "FAQs",
+                "href": "#faqs"
+              }
+            ],
+            "cta": {
+              "label": "Contact Us",
+              "href": "#contact"
+            },
+            "ariaLabels": {
+              "mainNav": "Main",
+              "mobileNav": "Mobile",
+              "openMenu": "Open menu",
+              "closeMenu": "Close menu"
+            }
+          }
+        }
+      },
+      "Banner": {
+        "variants": {
+          "CyvantaBanner1": {
+            "bgImage": "/images/cyber-hero-bg.webp",
+            "bgImageAlt": "Glowing cybersecurity shield with a padlock on a circuit board",
+            "titlePrefix": "Next Generation",
+            "titleHighlight": "Cybersecurity",
+            "titleSuffixLines": [
+              "Solutions For A Safer",
+              "Digital World"
+            ],
+            "description": "Protect Your Digital Infrastructure With Advanced Cybersecurity Solutions Designed To Detect Threats, Secure Data, And Keep Your Business One Step Ahead."
+          }
+        }
+      },
+      "AboutSection": {
+        "variants": {
+          "CyvantaAbout1": {
+            "badge": "About Us",
+            "title": "Securing Businesses",
+            "titlePrefix": "In A",
+            "titleHighlight": "Digital-First",
+            "titleSuffix": "World",
+            "description": "At CYVANTA, we deliver next-generation cybersecurity solutions that help organizations stay protected, resilient, and compliant in an ever-evolving threat landscape.",
+            "images": {
+              "main": {
+                "src": "/images/cyber-about-main.webp",
+                "alt": "Security analyst monitoring cybersecurity dashboards"
+              },
+              "accent": {
+                "src": "/images/cyber-about-small.webp",
+                "alt": "Glowing padlock on a circuit board"
+              }
+            },
+            "features": [
+              {
+                "id": "1",
+                "titleLines": [
+                  "Proactive",
+                  "Threat Defense"
+                ],
+                "icon": "shieldCheck"
+              },
+              {
+                "id": "2",
+                "titleLines": [
+                  "End-to-End",
+                  "Security Solutions"
+                ],
+                "icon": "layers"
+              },
+              {
+                "id": "3",
+                "titleLines": [
+                  "Expert",
+                  "Security Team"
+                ],
+                "icon": "team"
+              }
+            ]
+          }
+        }
+      },
+      "Services": {
+        "variants": {
+          "CyvantaServices1": {
+            "badge": "Our Services",
+            "titlePrefix": "Comprehensive",
+            "titleHighlight": "Cybersecurity",
+            "titleSuffix": "Services",
+            "description": "End-to-end security solutions to protect your business, data, and digital infrastructure from today’s evolving cyber threats.",
+            "services": [
+              {
+                "id": "1",
+                "label": "Threat Detection & Response",
+                "titleLines": [
+                  "Threat Detection",
+                  "& Response"
+                ],
+                "text": "Identify, analyze, and neutralize threats in real time.",
+                "icon": "shieldCheck"
+              },
+              {
+                "id": "2",
+                "label": "Vulnerability Assessment",
+                "titleLines": [
+                  "Vulnerability",
+                  "Assessment"
+                ],
+                "text": "Find and fix security gaps before they’re exploited.",
+                "icon": "layers"
+              },
+              {
+                "id": "3",
+                "label": "Data Security & Encryption",
+                "titleLines": [
+                  "Data Security",
+                  "& Encryption"
+                ],
+                "text": "Keep your critical data confidential and protected.",
+                "icon": "lock"
+              },
+              {
+                "id": "4",
+                "label": "Cloud Security",
+                "titleLines": [
+                  "Cloud",
+                  "Security"
+                ],
+                "text": "Secure your cloud environment across platforms and workloads.",
+                "icon": "cloudLock"
+              },
+              {
+                "id": "5",
+                "label": "Identity & Access Management",
+                "titleLines": [
+                  "Identity & Access",
+                  "Management"
+                ],
+                "text": "Control, monitor, and manage user access with confidence.",
+                "icon": "users"
+              },
+              {
+                "id": "6",
+                "label": "Security Monitoring (SOC)",
+                "titleLines": [
+                  "Security",
+                  "Monitoring (SOC)"
+                ],
+                "text": "24/7 surveillance and proactive threat management.",
+                "icon": "monitor"
+              },
+              {
+                "id": "7",
+                "label": "Compliance & Risk Management",
+                "titleLines": [
+                  "Compliance",
+                  "& Risk Management"
+                ],
+                "text": "Stay compliant with industry standards and reduce security risks.",
+                "icon": "shieldStar"
+              },
+              {
+                "id": "8",
+                "label": "Consulting & Advisory",
+                "titleLines": [
+                  "Consulting",
+                  "& Advisory"
+                ],
+                "text": "Expert guidance to build a stronger, more resilient security posture.",
+                "icon": "headset"
+              }
+            ]
+          }
+        }
+      },
+      "WhyChooseUs": {
+        "variants": {
+          "CyvantaWhyChooseUs1": {
+            "badge": "Why Choose Us",
+            "title": "A Trusted Partner for",
+            "titlePrefix": "Your",
+            "titleHighlight": "Cybersecurity",
+            "titleSuffix": "Needs",
+            "description": "We combine expert knowledge, proven processes, and proactive technologies to keep your business secure, compliant, and future-ready.",
+            "image": {
+              "src": "/images/cyber-about-main.webp",
+              "alt": "Security analyst monitoring a global threat map"
+            },
+            "features": [
+              {
+                "id": "1",
+                "number": "01",
+                "title": "Expertise & Experience",
+                "text": "A skilled team with deep cybersecurity knowledge across industries.",
+                "icon": "shieldCheck"
+              },
+              {
+                "id": "2",
+                "number": "02",
+                "title": "Proactive Threat Protection",
+                "text": "Identify, prevent, and respond to threats before they impact your business.",
+                "icon": "layers"
+              },
+              {
+                "id": "3",
+                "number": "03",
+                "title": "Tailored Security Solutions",
+                "text": "Flexible and scalable services designed for your specific needs.",
+                "icon": "laptopGear"
+              },
+              {
+                "id": "4",
+                "number": "04",
+                "title": "Compliance & Trust",
+                "text": "Help you meet industry standards and build a stronger, more secure digital environment.",
+                "icon": "handshake"
+              }
+            ]
+          }
+        }
+      },
+      "Testimonial": {
+        "variants": {
+          "CyvantaTestimonial1": {
+            "badge": "Testimonials",
+            "titlePrefix": "What Our",
+            "titleHighlight": "Clients",
+            "titleSuffix": "Say",
+            "description": "Trusted by businesses across industries for reliable and effective cybersecurity solutions.",
+            "ratingLabel": "5 out of 5 stars",
+            "testimonials": [
+              {
+                "id": "1",
+                "name": "Rahul Mehta",
+                "role": "IT Director, NexaTech",
+                "text": "CYVANTA has significantly strengthened our security posture. Their proactive approach and expert support give us complete peace of mind."
+              },
+              {
+                "id": "2",
+                "name": "Priya Sharma",
+                "role": "CTO, Finora Solutions",
+                "text": "The team is knowledgeable, responsive, and truly understands our business needs. Their security solutions are robust, scalable, and easy to manage."
+              },
+              {
+                "id": "3",
+                "name": "Amit Verma",
+                "role": "CEO, DataBridge",
+                "text": "A reliable cybersecurity partner! CYVANTA helped us identify risks early and implement strong, long-term protection for our digital assets."
+              },
+              {
+                "id": "4",
+                "name": "Sneha Kapoor",
+                "role": "CISO, CloudNest",
+                "text": "Their 24/7 monitoring caught threats we never knew existed. Response times are fast and the reporting is clear and actionable."
+              },
+              {
+                "id": "5",
+                "name": "Vikram Singh",
+                "role": "Head of IT, Orbit Logistics",
+                "text": "From the first assessment to ongoing support, the CYVANTA team has been professional and thorough. We feel far more secure today."
+              },
+              {
+                "id": "6",
+                "name": "Neha Gupta",
+                "role": "COO, FinEdge Capital",
+                "text": "They made compliance simple. Audits that used to take weeks now run smoothly, and our whole team understands the security roadmap."
+              },
+              {
+                "id": "7",
+                "name": "Arjun Nair",
+                "role": "CTO, MediSync Health",
+                "text": "Protecting patient data is critical for us. CYVANTA delivered a tailored solution that is secure, scalable and easy for our staff to use."
+              },
+              {
+                "id": "8",
+                "name": "Pooja Malhotra",
+                "role": "Director, RetailHub",
+                "text": "Excellent service and clear communication. They explain risks in plain language and always propose practical, cost-effective fixes."
+              },
+              {
+                "id": "9",
+                "name": "Karan Joshi",
+                "role": "Founder, AppForge",
+                "text": "As a growing startup we needed security that scales with us. CYVANTA gave us enterprise-level protection without slowing the team down."
+              }
+            ],
+            "ariaLabels": {
+              "previous": "Previous testimonials",
+              "next": "Next testimonials",
+              "page": "Go to testimonials page {page}"
+            }
+          }
+        }
+      },
+      "Faqs": {
+        "variants": {
+          "CyvantaFaqs1": {
+            "badge": "FAQs",
+            "title": "Frequently Asked",
+            "titlePrefix": "Questions",
+            "titleHighlight": "Answered",
+            "callout": {
+              "title": "Still Have a Question?",
+              "description": "Can’t find the answer you’re looking for? Our team is here to help you with any cybersecurity-related inquiries.",
+              "cta": {
+                "label": "Contact Us",
+                "href": "#contact"
+              }
+            },
+            "faqs": [
+              {
+                "id": "1",
+                "question": "What cybersecurity services do you provide?",
+                "answer": "We provide threat detection and response, vulnerability assessment, data security and encryption, cloud security, identity and access management, 24/7 security monitoring (SOC), compliance and risk management, and expert consulting and advisory."
+              },
+              {
+                "id": "2",
+                "question": "How do you protect businesses from cyber attacks?",
+                "answer": "We use a combination of proactive monitoring, threat detection, vulnerability management, and robust security controls to identify, prevent, and respond to cyber threats in real time."
+              },
+              {
+                "id": "3",
+                "question": "Do you offer 24/7 security monitoring?",
+                "answer": "Yes. Our Security Operations Center (SOC) monitors your environment around the clock, so threats are detected and handled quickly, day or night."
+              },
+              {
+                "id": "4",
+                "question": "Is my company data safe with your services?",
+                "answer": "Absolutely. We follow strict access controls, encryption standards and industry best practices, and we keep your data confidential at every stage of our engagement."
+              },
+              {
+                "id": "5",
+                "question": "Do you provide cybersecurity for small businesses?",
+                "answer": "Yes. We offer flexible and scalable solutions designed for organizations of every size, from startups and small businesses to large enterprises."
+              }
+            ]
+          }
+        }
+      },
+      "ContactSection": {
+        "variants": {
+          "CyvantaContact1": {
+            "badge": "Contact Us",
+            "titlePrefix": "Get in Touch With Our",
+            "titleHighlight": "Cyber Security",
+            "titleSuffix": "Experts",
+            "description": "Have questions or need a custom cybersecurity solution? Reach out to our team — we’re here to help.",
+            "information": {
+              "locationTitle": "Our Location",
+              "emailTitle": "Email Us",
+              "responseTime": "We reply within 24 hours",
+              "phoneTitle": "Call Us",
+              "workingHoursTitle": "Working Hours",
+              "days": "Mon – Sat",
+              "hours": "9:00 AM – 6:00 PM",
+              "schedule": " 9:00 AM – 6:00 PM"
+            },
+            "form": {
+              "title": "Send Us a Message",
+              "namePlaceholder": "Your Name*",
+              "emailPlaceholder": "Your Email*",
+              "phonePlaceholder": "Phone Number*",
+              "servicePlaceholder": "Select Service",
+              "messagePlaceholder": "Your Message*",
+              "submitLabel": "Send Message",
+              "phonePattern": "[0-9+() .-]{7,20}",
+              "phoneValidationMessage": "Enter a phone number using 7 to 20 digits, spaces, or + ( ) . -",
+              "successMessage": "Your message is ready.",
+              "emailActionLabel": "Open your email app to send it.",
+              "emailSubjectPrefix": "Cybersecurity inquiry from"
+            }
+          }
+        }
+      },
+      "Footer": {
+        "variants": {
+          "CyvantaFooter1": {
+            "logo": {
+              "src": "/images/logo.png",
+              "alt": "Cyvanta Cyber Security"
+            },
+            "aboutText": "Next-generation cybersecurity solutions that protect your business, data, and digital assets.",
+            "quickLinksTitle": "Quick Links",
+            "contactTitle": "Get in Touch",
+            "quickLinks": [
+              {
+                "id": "1",
+                "label": "Home",
+                "href": "#home"
+              },
+              {
+                "id": "2",
+                "label": "About Us",
+                "href": "#about"
+              },
+              {
+                "id": "3",
+                "label": "Our Services",
+                "href": "#services"
+              },
+              {
+                "id": "4",
+                "label": "Why Choose Us",
+                "href": "#why-choose-us"
+              },
+              {
+                "id": "5",
+                "label": "Testimonials",
+                "href": "#testimonials"
+              },
+              {
+                "id": "6",
+                "label": "Contact Us",
+                "href": "#contact"
+              }
+            ],
+            "copyright": "© 2026 CYVANTA. All Rights Reserved. Powered by Lestow."
+          }
+        }
+      }
+    }
+  }
+}

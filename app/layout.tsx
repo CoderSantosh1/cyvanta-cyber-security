@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/CyberFooter";
-import categoryData from "@/data";
+import { site } from "@/data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: categoryData.common.site.name,
-  description: categoryData.common.site.description,
+  title: site.brand.siteTitle,
+  description: site.brand.siteDescription,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

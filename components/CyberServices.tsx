@@ -1,11 +1,10 @@
 "use client";
 
 import { Fragment, type ReactNode } from "react";
-import categoryData from "@/data";
-import type { ServiceIconKey } from "@/types/category";
+import { site, type ServiceIconKey } from "@/data";
 
-const servicesContent = categoryData.services;
-type Service = (typeof servicesContent.items)[number];
+const servicesContent = site.services;
+type Service = (typeof servicesContent.services)[number];
 
 const iconProps = {
   viewBox: "0 0 40 40",
@@ -114,7 +113,7 @@ function ServiceCard({ service }: { service: Service }) {
       </div>
 
       <p className="mt-5 text-[15px] leading-[1.55] text-[#2d3036] xl:text-[16px]">
-        {service.description}
+        {service.text}
       </p>
 
       {/* Orange bottom border */}
@@ -135,14 +134,14 @@ export default function CyberServices() {
           <div className="flex items-center gap-4">
             <span className="h-px w-14 bg-[#14161a] sm:w-[76px]" />
             <span className="text-[22px] font-semibold text-[#14161a] sm:text-[27px]">
-              {servicesContent.eyebrow}
+              {servicesContent.badge}
             </span>
             <span className="h-px w-14 bg-[#14161a] sm:w-[76px]" />
           </div>
 
           <h2 className="mt-3 text-[clamp(28px,3.3vw,50px)] font-bold leading-[1.15] tracking-[-0.025em] text-[#14161a]">
-            {servicesContent.title}{" "}
-            <span className="text-[#f26a1b]">{servicesContent.titleAccent}</span>{" "}
+            {servicesContent.titlePrefix}{" "}
+            <span className="text-[#f26a1b]">{servicesContent.titleHighlight}</span>{" "}
             {servicesContent.titleSuffix}
           </h2>
 
@@ -153,8 +152,8 @@ export default function CyberServices() {
 
         {/* Cards */}
         <div className="mt-10 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          {servicesContent.items.map((service) => (
-            <ServiceCard key={service.label} service={service} />
+          {servicesContent.services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
       </div>

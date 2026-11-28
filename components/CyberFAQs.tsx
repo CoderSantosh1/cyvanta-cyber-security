@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import categoryData from "@/data";
+import { site } from "@/data";
 
-const faqContent = categoryData.faqs;
-const contactHref = categoryData.common.site.contactHref;
+const faqContent = site.faqs;
+const contactHref = faqContent.callout.cta.href;
 
 function BubbleIcon() {
   return (
@@ -43,7 +43,7 @@ export default function CyberFAQs() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              {faqContent.eyebrow}
+              {faqContent.badge}
             </span>
           </div>
 
@@ -51,7 +51,7 @@ export default function CyberFAQs() {
             {faqContent.title}
             <span className="block">
               {faqContent.titlePrefix}{" "}
-              <span className="text-[#f26a1b]">{faqContent.titleAccent}</span>
+              <span className="text-[#f26a1b]">{faqContent.titleHighlight}</span>
             </span>
           </h2>
 
@@ -88,18 +88,18 @@ export default function CyberFAQs() {
               <BubbleIcon />
 
               <h3 className="mt-4 text-[26px] font-bold text-[#14161a] sm:text-[30px]">
-                {faqContent.calloutTitle}
+                {faqContent.callout.title}
               </h3>
 
               <p className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-[#2d3036] sm:text-[17px]">
-                {faqContent.calloutDescription}
+                {faqContent.callout.description}
               </p>
 
               <a
                 href={contactHref}
                 className="mt-6 inline-flex items-center gap-3 rounded-[10px] bg-[#f26a1b] px-6 py-3 text-[16px] font-semibold text-white shadow-[0_6px_14px_rgba(238,95,8,0.3)] transition hover:brightness-105"
               >
-                {faqContent.contactButtonLabel}
+                {faqContent.callout.cta.label}
                 <svg viewBox="0 0 28 16" className="h-4 w-6" fill="none">
                   <path
                     d="M1 8h24M19 2l6 6-6 6"
@@ -116,14 +116,14 @@ export default function CyberFAQs() {
 
         {/* Right: accordion */}
         <div className="flex w-full flex-col gap-4 lg:gap-[18px]">
-          {faqContent.items.map((faq, index) => {
+          {faqContent.faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const panelId = `faq-panel-${index}`;
             const buttonId = `faq-button-${index}`;
 
             return (
               <div
-                key={faq.question}
+                key={faq.id}
                 className={`overflow-hidden rounded-[16px] bg-white transition-all ${
                   isOpen
                     ? "border border-[#f26a1b] shadow-[0_8px_22px_rgba(242,106,27,0.12)]"

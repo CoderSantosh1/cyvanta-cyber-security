@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
-import categoryData from "@/data";
-import type { ReasonIconKey } from "@/types/category";
+import { site, type ReasonIconKey } from "@/data";
 
-const whyContent = categoryData.whyChooseUs;
+const whyContent = site.whyChooseUs;
 
 const iconProps = {
   viewBox: "0 0 40 40",
@@ -69,7 +68,7 @@ export default function CyberWhyChooseUs() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-14 bg-[#f26a1b]" />
             <span className="text-[20px] font-semibold text-[#14161a] sm:text-[24px]">
-              {whyContent.eyebrow}
+              {whyContent.badge}
             </span>
           </div>
 
@@ -77,7 +76,7 @@ export default function CyberWhyChooseUs() {
             {whyContent.title}
             <span className="block">
               {whyContent.titlePrefix}{" "}
-              <span className="text-[#f26a1b]">{whyContent.titleAccent}</span>{" "}
+              <span className="text-[#f26a1b]">{whyContent.titleHighlight}</span>{" "}
               {whyContent.titleSuffix}
             </span>
           </h2>
@@ -96,8 +95,8 @@ export default function CyberWhyChooseUs() {
 
             <div className="absolute inset-0 overflow-hidden rounded-[16px] shadow-[0_14px_34px_rgba(0,0,0,0.2)]">
               <Image
-                src={whyContent.image}
-                alt={whyContent.imageAlt}
+                src={whyContent.image.src}
+                alt={whyContent.image.alt}
                 fill
                 sizes="(max-width: 1024px) 90vw, 600px"
                 className="object-cover object-center"
@@ -115,7 +114,7 @@ export default function CyberWhyChooseUs() {
           />
 
           {whyContent.features.map((reason) => (
-            <div key={reason.number} className="relative flex items-center">
+            <div key={reason.id} className="relative flex items-center">
               {/* Number pill */}
               <span className="relative z-10 grid h-[58px] w-[52px] shrink-0 place-items-center rounded-full bg-white text-[19px] font-bold text-[#14161a] shadow-[0_6px_16px_rgba(0,0,0,0.1)] sm:h-[72px] sm:w-[54px] sm:text-[22px]">
                 {reason.number}
@@ -134,7 +133,7 @@ export default function CyberWhyChooseUs() {
                     {reason.title}
                   </h3>
                   <p className="mt-1.5 text-[14px] leading-[1.5] text-[#2d3036] sm:text-[16px]">
-                    {reason.description}
+                    {reason.text}
                   </p>
                 </div>
               </article>

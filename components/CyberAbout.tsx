@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { Fragment, type ReactNode } from "react";
-import categoryData from "@/data";
-import type { AboutIconKey } from "@/types/category";
+import { site, type AboutIconKey } from "@/data";
 
-const about = categoryData.about;
+const about = site.about;
 
 const iconProps = {
   viewBox: "0 0 32 32",
@@ -88,8 +87,8 @@ export default function CyberAbout() {
           {/* Large image */}
           <div className="absolute inset-x-[3%] top-0 bottom-[2%] overflow-hidden rounded-[14px]">
             <Image
-              src={about.image}
-              alt={about.imageAlt}
+              src={about.images.main.src}
+              alt={about.images.main.alt}
               fill
               sizes="(max-width: 1024px) 90vw, 560px"
               className="object-cover object-center"
@@ -99,8 +98,8 @@ export default function CyberAbout() {
           {/* Small image */}
           <div className="absolute bottom-0 left-0 z-10 h-[34%] w-[46%] overflow-hidden rounded-[14px] border-[4px] border-white">
             <Image
-              src={about.accentImage}
-              alt={about.accentImageAlt}
+              src={about.images.accent.src}
+              alt={about.images.accent.alt}
               fill
               sizes="(max-width: 1024px) 45vw, 280px"
               className="object-cover object-center"
@@ -113,14 +112,14 @@ export default function CyberAbout() {
           <span className="block h-[4px] w-14 bg-[#f26a1b]" />
 
           <p className="mt-5 text-[22px] font-medium text-[#14161a] sm:text-[27px]">
-            {about.eyebrow}
+            {about.badge}
           </p>
 
           <h2 className="mt-1 text-[clamp(32px,3.7vw,58px)] font-bold leading-[1.1] tracking-[-0.025em] text-[#14161a]">
             {about.title}
             <span className="block">
               {about.titlePrefix}{" "}
-              <span className="text-[#f26a1b]">{about.titleAccent}</span>{" "}
+              <span className="text-[#f26a1b]">{about.titleHighlight}</span>{" "}
               {about.titleSuffix}
             </span>
           </h2>
@@ -133,7 +132,7 @@ export default function CyberAbout() {
           <div className="mt-9 grid w-full max-w-[640px] gap-8 sm:grid-cols-3 sm:gap-0">
             {about.features.map((feature, index) => (
               <div
-                key={feature.titleLines.join("-")}
+                key={feature.id}
                 className={`flex flex-col items-center text-center sm:items-start sm:text-left ${
                   index > 0 ? "sm:border-l sm:border-[#e0dcdc] sm:pl-7" : "sm:pr-7"
                 }`}

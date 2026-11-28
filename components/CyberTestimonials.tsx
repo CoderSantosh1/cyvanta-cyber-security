@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import categoryData from "@/data";
+import { site } from "@/data";
 
-const testimonialsContent = categoryData.testimonials;
-const testimonials = testimonialsContent.items;
+const testimonialsContent = site.testimonial;
+const testimonials = testimonialsContent.testimonials;
 
 function usePerPage() {
   const [perPage, setPerPage] = useState(3);
@@ -124,7 +124,7 @@ function TestimonialCard({
       </span>
 
       <p className="mt-4 text-[17px] leading-[1.6] text-[#1c1e22] sm:text-[19px]">
-        {item.quote}
+        {item.text}
       </p>
 
       <div className="mt-auto flex items-center gap-4 pt-6">
@@ -183,14 +183,14 @@ export default function CyberTestimonials() {
           <div className="flex items-center gap-4">
             <span className="h-[4px] w-12 bg-[#f26a1b] sm:w-[50px]" />
             <span className="text-[22px] font-semibold text-[#14161a] sm:text-[27px]">
-              {testimonialsContent.eyebrow}
+              {testimonialsContent.badge}
             </span>
             <span className="h-[4px] w-12 bg-[#f26a1b] sm:w-[50px]" />
           </div>
 
           <h2 className="mt-3 text-[clamp(32px,3.8vw,58px)] font-bold leading-[1.1] tracking-[-0.03em] text-[#14161a]">
-            {testimonialsContent.title}{" "}
-            <span className="text-[#f26a1b]">{testimonialsContent.titleAccent}</span>{" "}
+            {testimonialsContent.titlePrefix}{" "}
+            <span className="text-[#f26a1b]">{testimonialsContent.titleHighlight}</span>{" "}
             {testimonialsContent.titleSuffix}
           </h2>
 
@@ -203,7 +203,7 @@ export default function CyberTestimonials() {
         <div className={`mt-10 grid gap-5 sm:gap-6 ${gridCols}`}>
           {visible.map((item, index) => (
             <TestimonialCard
-              key={item.name}
+              key={item.id}
               item={item}
               avatarIndex={current * perPage + index}
             />
@@ -215,7 +215,7 @@ export default function CyberTestimonials() {
           <button
             type="button"
             onClick={prev}
-            aria-label={categoryData.common.accessibility.previousTestimonials}
+            aria-label={testimonialsContent.ariaLabels.previous}
             className="grid h-[42px] w-[42px] place-items-center rounded-[10px] border border-[#d9d9d9] bg-white text-[#14161a] shadow-sm transition hover:border-[#f26a1b] hover:text-[#f26a1b]"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
@@ -235,7 +235,7 @@ export default function CyberTestimonials() {
                 key={i}
                 type="button"
                 onClick={() => setPage(i)}
-                aria-label={categoryData.common.accessibility.testimonialPageLabel.replace(
+                aria-label={testimonialsContent.ariaLabels.page.replace(
                   "{page}",
                   String(i + 1),
                 )}
@@ -252,7 +252,7 @@ export default function CyberTestimonials() {
           <button
             type="button"
             onClick={next}
-            aria-label={categoryData.common.accessibility.nextTestimonials}
+            aria-label={testimonialsContent.ariaLabels.next}
             className="grid h-[42px] w-[42px] place-items-center rounded-[10px] border border-[#d9d9d9] bg-white text-[#14161a] shadow-sm transition hover:border-[#f26a1b] hover:text-[#f26a1b]"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
